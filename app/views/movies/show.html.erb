@@ -1,4 +1,22 @@
 <h1><%= @movie.title%></h1>
 <div class="container">
   <%= @movie.description%>
+
+
+<div class="pull-left">
+  <%= link_to("write comment", new_movie_review_path(@movie), class: "btn btn-default")%>
+</div>
+<hr>
+<table class="table">
+  <% @reviews.each do |review|%>
+  <tr>
+  <td>
+    <%= review.user.email %>
+  </td>
+  <td>
+    <%= review.comment%>
+  </td>
+    </tr>
+  <% end %>
+</table>
 </div>
