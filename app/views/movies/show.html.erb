@@ -1,8 +1,22 @@
 <h1><%= @movie.title%></h1>
 <div class="container">
   <%= @movie.description%>
+  <span class="pull-right">
+    <% if current_user && current_user.is_member_of?(@movie)%>
+      <label class="label label-success">favorite</label>
+      <%= link_to  quit_movie_path(@movie), method: :post, class: "btn btn-default", style: "color: red;" do %>
+      <i class="fa fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+        <label class="label label-warning">unlike</label>
+        <%= link_to  join_movie_path(@movie), method: :post, class: "btn btn-default" do %>
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <% end %>
+    <% end %>
+  </span>
+</div>
 
-
+<div class="container">
 <div class="pull-left">
   <%= link_to("write comment", new_movie_review_path(@movie), class: "btn btn-default")%>
 </div>
