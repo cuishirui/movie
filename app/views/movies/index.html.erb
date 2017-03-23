@@ -1,0 +1,24 @@
+<h1 class="text-center">movie comment</h1>
+<div class="pull-right">
+  <%= link_to("add new movie", new_movie_path(@movie), class: "btn btn-default")%>
+</div>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>title</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie|%>
+      <tr>
+        <td><%= movie.id %></td>
+        <td><%=link_to movie.title, movie_path(movie)%></td>
+        <td><%= movie.description%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
