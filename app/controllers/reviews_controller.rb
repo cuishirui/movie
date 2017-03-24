@@ -15,11 +15,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.movie = @movie
     @review.user = current_user
-    if current_user.is_member_of?(@movie)
-      @review.save
+    if @review.save
       redirect_to movie_path(@movie)
     else
-      flash[:warning] = "please join this movie"
       render :new
     end
   end

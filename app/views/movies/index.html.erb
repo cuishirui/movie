@@ -1,13 +1,12 @@
+<div class="row row-backgroud">
 <div class="container">
   <h1 class="text-center">movie comment</h1>
-  <div class="pull-right">
-    <%= link_to("add new movie", new_movie_path(@movie), class: "btn btn-default")%>
-  </div>
-  <hr>
-
+    <p class="text-right",style="margin:15px;"><%= link_to("add new movie", new_movie_path(@movie), class: "btn btn-default")%></p>
+    <hr>
   <div class="row">
     <% @movies.each do |movie|%>
       <div class="col-xs-6 col-md-3">
+        <div class="movie-index-show">
         <%= link_to movie_path(movie) do %>
           <% if movie.image.present?%>
             <%= image_tag(movie.image.thumb.url, class: "thumbnail")%>
@@ -15,8 +14,10 @@
             <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
           <% end %>
         <% end %>
-        <%= movie.title%>
+      </div>
+        <p class="text-center"><%= movie.title%></p>
       </div>
     <% end %>
   </div>
+</div>
 </div>
