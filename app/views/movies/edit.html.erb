@@ -3,7 +3,10 @@
   <%= simple_form_for @movie do |f|%>
     <%= f.input :title%>
     <%= f.input :description%>
-    <%= f.input :picture%>
+    <% if @movie.image.present?%>
+      <%= image_tag(@movie.image.thumb.url)%>
+    <% end %>
+    <%= f.input :image, as: :file%>
     <%= f.submit "submit",data: { dimiss_with: "submitting..."}%>
   <% end %>
 </div>

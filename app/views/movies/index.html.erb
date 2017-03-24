@@ -3,24 +3,18 @@
   <%= link_to("add new movie", new_movie_path(@movie), class: "btn btn-default")%>
 </div>
 <div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>title</th>
-      <th>description</th>
-      <th>creator</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="row">
     <% @movies.each do |movie|%>
-      <tr>
-        <td><%= movie.id %></td>
-        <td><%=link_to movie.title, movie_path(movie)%></td>
-        <td><%= movie.description%></td>
-        <td><%= movie.user.email%></td>
-      </tr>
+      <div class="col-xs-6 col-md-3">
+        <%= link_to movie_path(movie) do %>
+          <% if movie.image.present?%>
+            <%= image_tag(movie.image.thumb.url, class: "thumbnail")%>
+          <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+          <% end %>
+        <% end %>
+        <%= movie.title%>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 </div>
