@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   resources :movies do
     member do
       post :join
-      post :quit 
+      post :quit
     end
     resources :reviews
   end
 
+  namespace :account do
+    resources :movies
+  end
 
 end

@@ -8,7 +8,7 @@
       <i class="fa fa-heart" aria-hidden="true"></i>
       <% end %>
     <% else %>
-        <label class="label label-warning">unlike</label>
+        <label class="label label-warning">点击收藏</label>
         <%= link_to  join_movie_path(@movie), method: :post, class: "btn btn-default" do %>
         <i class="fa fa-heart-o" aria-hidden="true"></i>
         <% end %>
@@ -18,7 +18,11 @@
 
 <div class="container">
 <div class="pull-left">
-  <%= link_to("write comment", new_movie_review_path(@movie), class: "btn btn-default")%>
+  <%# if current_user.is_member_of?(@movie)%>
+    <%= link_to("write comment", new_movie_review_path(@movie), class: "btn btn-default")%>
+  <%# else %>
+    <%#= flash[:noice] = "please join this movie"%>
+    <%# end %>
 </div>
 <hr>
 <table class="table">
