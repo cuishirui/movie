@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     resources :movies
   end
 
+  namespace :admin do
+    resources :movies 
+  end
+
 end

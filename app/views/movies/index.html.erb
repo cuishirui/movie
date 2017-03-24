@@ -1,8 +1,10 @@
-<h1 class="text-center">movie comment</h1>
-<div class="pull-right">
-  <%= link_to("add new movie", new_movie_path(@movie), class: "btn btn-default")%>
-</div>
 <div class="container">
+  <h1 class="text-center">movie comment</h1>
+  <div class="pull-right">
+    <%= link_to("add new movie", new_movie_path(@movie), class: "btn btn-default")%>
+  </div>
+  <hr>
+
   <div class="row">
     <% @movies.each do |movie|%>
       <div class="col-xs-6 col-md-3">

@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def quit!(movie)
     love_movies.delete(movie)
   end
+
+  def admin?
+    is_admin
+  end
 end
