@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.7.2"
 
-set :application, "rails102"
+set :application, "movie"
 set :repo_url, "git@github.com:cuishirui/movie.git"
 
 # Default branch is :master
