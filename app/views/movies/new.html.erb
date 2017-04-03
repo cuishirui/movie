@@ -1,0 +1,22 @@
+<h1>new movie</h1>
+<div class="container">
+  <%= simple_form_for @movie do |f|%>
+    <%= f.input :title%>
+    <%= f.input :director%>
+    <%= f.input :actor%>
+    <%= f.input :movie_type%>
+    <%= f.input :country, collection:["中国","美国","英国","日本","韩国"] %>
+    <%= f.input :language, collection: ["英语","中文","日文"]%>
+    <div class="movie-time">
+      <%= f.input :show_time, :as => :string%>
+    </div>
+    <%= f.input :film_length%>
+    <%= f.input :description%>
+    <%= f.input :image, as: :file%>
+    <%= f.submit "submit",data: { dimiss_with: "submitting..."}%>
+  <% end %>
+</div>
+
+<script>
+    $(".movie-time").datepicker({format: "yyyy/mm/dd"});
+</script>

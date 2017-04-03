@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ @import "bootstrap-datepicker3";
+ 
+
+ .container {
+   margin-top: 15px;
+  margin-bottom: 15px;
+   padding: 0 0 0 0;
+   border: none;
+   transition: box-shadow 0.5s;
+   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.09);
+   background-color: #fff;
+ }
+
+ .row-backgroud {
+   margin-top: -15px;
+    background-color: #F4F3F3;
+ }
+ .movie-show {
+   margin: 10px 10px;
+ }
+ .thumbnail:hover {
+   box-shadow: 5px 5px 15px #918d8b;
+ }
+ .movie-index-show {
+   margin-left: 30px;
+ }

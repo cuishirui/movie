@@ -1,0 +1,66 @@
+<div class="row row-backgroud">
+<h1 class="text-center"><%= @movie.title%></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="movie-show">
+      <% if @movie.image.present?%>
+        <%= image_tag(@movie.image.medium.url, class: "thumbnail")%>
+      <% else %>
+        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+      <% end %>
+      <span class="pull-center">
+        <% if current_user && current_user.is_member_of?(@movie)%>
+          <label class="label label-success">favorite</label>
+          <%= link_to  quit_movie_path(@movie), method: :post, class: "btn btn-default", style: "color: red;" do %>
+          <i class="fa fa-heart" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+            <label class="label label-warning">点击收藏</label>
+            <%= link_to  join_movie_path(@movie), method: :post, class: "btn btn-default" do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <% end %>
+        <% end %>
+      </span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="movie-description">
+      <p style="margin-top:30px;">导演：    <%= @movie.director%></p>
+      <p>主演：    <%= @movie.actor%></p>
+      <p>类型：    <%= @movie.movie_type%></p>
+      <p>国家：    <%= @movie.country%></p>
+      <p>语言：    <%= @movie.language%></p>
+      <p>上映时间： <%= @movie.show_time%></p>
+      <p>片长：    <%= @movie.film_length%></p>
+      <p>剧情介绍： <%= simple_format(@movie.description)%></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+<div class="pull-left" style="margin: 15px;">
+  <%# if current_user.is_member_of?(@movie)%>
+    <%= link_to("write comment", new_movie_review_path(@movie), class: "btn btn-default")%>
+  <%# else %>
+    <%#= flash[:noice] = "please join this movie"%>
+    <%# end %>
+</div>
+<div class="comment-show">
+<table class="table">
+  <% @reviews.each do |review|%>
+  <tr>
+  <td>
+    <%= review.user.email %>
+  </td>
+  <td>
+    <%= review.comment%>
+  </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+</div>
+</div>

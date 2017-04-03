@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <th>#</th>
+    <th>title</th>
+    <th>picture</th>
+    <th>option</th>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie|%>
+      <tr>
+        <th><%= movie.id%></th>
+        <th>
+          <% if movie.image.present? %>
+            <%= image_tag(movie.image.thumb.url, class: "thumbnail")%>
+         <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+          <% end %>
+        </th>
+        <th><%= movie.title%></th>
+        <th>
+          <%= link_to("edit", edit_admin_movie_path(movie), class: "btn btn-default")%>
+          <%= link_to("delete", admin_movie_path(movie), method: :delete, class: "btn btn-default")%>
+        </th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
